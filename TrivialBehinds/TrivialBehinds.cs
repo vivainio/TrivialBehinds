@@ -29,7 +29,12 @@ namespace TrivialBehind
         // returns the disposer that removes this from list
         public static IDisposable CreateForUi<TUi>(TUi ui)
         {
-            var handler = registeredBehinds[typeof(TUi)];
+            Type handler;
+            var ok = registeredBehinds.TryGetValue(typeof(TUi), out handler);
+            if (!ok)
+            {
+                throw new ArgumentException($"Behind handler for {ui} not found");
+            }
             var ctor = handler.GetConstructor(new[] { typeof(TUi) });
             var instance = ctor.Invoke(new[] { (object) ui });
             createdBehinds.Add((handler, instance));
