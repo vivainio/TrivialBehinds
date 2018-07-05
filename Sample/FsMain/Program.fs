@@ -3,9 +3,6 @@ open System.Windows.Forms
 open DesignerPart
 open TrivialBehind
 
-// Learn more about F# at http://fsharp.org
-// See the 'F# Tutorial' project for more help.
-
 type MyBehind(ui: CalcUi) =
     let mutable counter = 0
     let showCount() =
@@ -14,7 +11,7 @@ type MyBehind(ui: CalcUi) =
     do
         ui.btnPlus.Click.Add <|
             fun _ ->
-                counter <- counter + 1
+                counter <- counter+1
                 showCount()
         ui.btnMinus.Click.Add <|
             fun _ ->
