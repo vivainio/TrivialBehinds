@@ -11,13 +11,6 @@ using TrivialBehind;
 
 namespace DesignerPart
 {
-    public class CalcUi
-    {
-        public Button btnPlus;
-        public Label label1;
-        public Button btnMinus;
-
-    }
     public partial class Form1 : Form
     {
         public Form1()
