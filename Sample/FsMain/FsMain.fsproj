@@ -69,11 +69,25 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.ValueTuple">
       <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TrivialBehinds\TrivialBehinds.csproj">
+      <Name>TrivialBehinds</Name>
+      <Project>{56e7dbb8-8755-4b69-82cb-6340e9e87278}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DesignerPart\DesignerPart.csproj">
+      <Name>DesignerPart</Name>
+      <Project>{8151ce6b-c9f0-4450-bcb3-9e5f68d317a9}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

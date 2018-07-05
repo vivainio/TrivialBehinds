@@ -31,6 +31,7 @@ namespace DesignerPart
                 label1 = label1
             });
             Deactivate += (o, e) => d.Dispose();
+            // boilerplate ends
         }
     }
 }
