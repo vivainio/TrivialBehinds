@@ -121,6 +121,6 @@ If that extra terminal window on launch bothers you, change outputtype form Exe 
 ## Extra notes
 
 - The library is not yet in nuget, I will push it after a feedback round.
-- Windows Forms apps have fuzzy font rendering on Windows 10, unless you do a  [https://docs.microsoft.com/en-us/dotnet/framework/winforms/high-dpi-support-in-windows-forms](trick)
+- Windows Forms apps have fuzzy font rendering on Windows 10, unless you do a [trick](https://docs.microsoft.com/en-us/dotnet/framework/winforms/high-dpi-support-in-windows-forms)
 and compile with .NET Framework 4.7. Don't even think about publishing a Windows Forms
 app without this.
