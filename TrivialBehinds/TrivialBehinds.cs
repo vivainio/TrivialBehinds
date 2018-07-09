@@ -6,7 +6,7 @@ namespace TrivialBehind
 {
     struct StoredBehind
     {
-        public Type BehindType;
+        public Type DataType;
         public object BehindInstance;
         public object Creator; // e.g. the form instance that created the behind
     }
@@ -27,40 +27,42 @@ namespace TrivialBehind
                 createdBehinds.RemoveAll(d => d.BehindInstance == this.obj);
             }
         }
-        public static void RegisterBehind<TUi, TBehind>()
+        // register behind for later creation with CreateBehind
+        public static void RegisterBehind<TData, TBehind>()
         {
-            registeredBehinds.Add(typeof(TUi), typeof(TBehind));
+            registeredBehinds.Add(typeof(TData), typeof(TBehind));
         }
 
+        // creates a behind object for corresponding TData type
         // returns the disposer that removes this from list
-        public static IDisposable CreateForUi<TUi>(object creator, TUi ui)
+        public static IDisposable CreateBehind<TData>(object creator, TData ui)
         {
             Type handler;
-            var ok = registeredBehinds.TryGetValue(typeof(TUi), out handler);
+            var ok = registeredBehinds.TryGetValue(typeof(TData), out handler);
             if (!ok)
             {
                 throw new ArgumentException($"Behind handler for {ui} not found");
             }
-            var ctor = handler.GetConstructor(new[] { typeof(TUi) });
+            var ctor = handler.GetConstructor(new[] { typeof(TData) });
             var instance = ctor.Invoke(new[] { (object) ui });
             createdBehinds.Add(
                 new StoredBehind
                 {
-                    BehindType = handler,
+                    DataType = handler,
                     BehindInstance = instance,
                     Creator = creator
                 });
             return new BDisposer(instance);
         }
         // should not be called from form side (since it shouldn't know behind types)
-        public static TBehind[] FindBehinds<TBehind>()
+        public static TBehind[] BehindsByType<TBehind>()
         {
             var needle = typeof(TBehind);
-            var res = createdBehinds.Where(e => e.BehindType == needle).Select(e => e.BehindInstance).Cast<TBehind>().ToArray();
+            var res = createdBehinds.Where(e => e.DataType == needle).Select(e => e.BehindInstance).Cast<TBehind>().ToArray();
             return res;
         }
 
-        public static TBehind FindBehindFor<TBehind>(object creator) where TBehind: class =>
-            createdBehinds.First(b => b.Creator == creator) as TBehind;   
+        public static TBehind BehindFor<TBehind>(object creator) where TBehind: class =>
+            createdBehinds.First(b => b.Creator == creator) as TBehind;
     }
 }
