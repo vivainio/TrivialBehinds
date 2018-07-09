@@ -7,6 +7,5 @@ namespace DesignerPart
         public Button btnPlus;
         public Label label1;
         public Button btnMinus;
-
     }
 }
