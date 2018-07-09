@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Title>TrivialBehinds</Title>
+    <Description>Minimal dependency injector for creating 'behind' classes (e.g. for GUI programming)</Description>
+    <Authors>vivainio</Authors>
+    <Company />
+    <Copyright>Ville Vainio</Copyright>
+    <PackageProjectUrl>https://github.com/vivainio/TrivialBehinds</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/vivainio/TrivialBehinds/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
-
 </Project>

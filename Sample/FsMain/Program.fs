@@ -19,9 +19,15 @@ type MyBehind(ui: CalcUi) =
                 showCount()
 
 
+let registerAppBehinds() =
+    TrivialBehinds.RegisterBehind<CalcUi, MyBehind>()
+    
+
 [<EntryPoint; STAThread>]
 let main argv =
-    TrivialBehinds.RegisterBehind<CalcUi, MyBehind>()
-    use form = new Form1()
+    registerAppBehinds()
+    Application.EnableVisualStyles()
+    Application.SetCompatibleTextRenderingDefault(false)
+    use form = new Form1();
     Application.Run(form)
     0

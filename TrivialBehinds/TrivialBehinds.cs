@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace TrivialBehind
 {
-    struct StoredBehind
+    class StoredBehind
     {
         public Type DataType;
         public object BehindInstance;
@@ -62,7 +62,14 @@ namespace TrivialBehind
             return res;
         }
 
-        public static TBehind BehindFor<TBehind>(object creator) where TBehind: class =>
-            createdBehinds.First(b => b.Creator == creator) as TBehind;
+        public static TBehind BehindFor<TBehind>(object creator) where TBehind : class
+        {
+            var found = createdBehinds.First(b => b.Creator == creator);
+            if (found == null)
+            {
+                throw new InvalidOperationException($"Tried to find behind for {creator} but it was not created");
+            }
+            return found.BehindInstance as TBehind ?? throw new ArgumentException($"Behind was of wrong type, expected {typeof(TBehind)}");
+        }
     }
 }
