@@ -2,7 +2,7 @@
 
 namespace DesignerPart
 {
-    public class CalcUi
+    public class Form1Ui
     {
         public Button btnPlus;
         public Label label1;

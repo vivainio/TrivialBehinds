@@ -17,7 +17,7 @@ namespace DesignerPart
         {
             InitializeComponent();
             // this is only thing you need to add to your form, to expose ui controls
-            var d = TrivialBehinds.CreateBehind(this, new CalcUi
+            var d = TrivialBehinds.CreateBehind(this, new Form1Ui
             {
                 btnMinus = btnMinus,
                 btnPlus = btnPlus,

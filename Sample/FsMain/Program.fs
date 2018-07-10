@@ -3,7 +3,7 @@ open System.Windows.Forms
 open DesignerPart
 open TrivialBehind
 
-type MyBehind(ui: CalcUi) =
+type Form1Behind(ui: Form1Ui) =
     let mutable counter = 0
     let showCount() =
         ui.label1.Text <- sprintf "Count is: %d" counter
@@ -20,7 +20,7 @@ type MyBehind(ui: CalcUi) =
 
 
 let registerAppBehinds() =
-    TrivialBehinds.RegisterBehind<CalcUi, MyBehind>()
+    TrivialBehinds.RegisterBehind<Form1Ui, Form1Behind>()
     
 
 [<EntryPoint; STAThread>]

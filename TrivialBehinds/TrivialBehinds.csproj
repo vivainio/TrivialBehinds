@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Title>TrivialBehinds</Title>
-    <Description>Minimal dependency injector for creating 'behind' classes (e.g. for GUI programming)</Description>
+    <Description>Minimal dependency injector for creating 'behind' classes (e.g. for GUI components)</Description>
     <Authors>vivainio</Authors>
     <Company />
     <Copyright>Ville Vainio</Copyright>
