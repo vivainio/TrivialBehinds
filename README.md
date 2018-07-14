@@ -2,6 +2,10 @@
 
 A Micro Dependency Injector to make Windows Forms development in F# cheap and fun. Or C#.
 
+## Installation
+
+Available on Nuget: https://www.nuget.org/packages/TrivialBehinds/
+
 ## Elevator pitch
 
 - You want to use the Visual Studio Forms Designer because hand writing the GUI creation code is messy.
