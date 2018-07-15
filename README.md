@@ -1,6 +1,8 @@
 # TrivialBehinds
 
-A Micro Dependency Injector to make Windows Forms development in F# cheap and fun. Or C#.
+A Micro Dependency Injector to make Windows Forms development in F# cheap and fun. Or even in C#.
+
+You may also want to read a [related blog post on creating a Windows Forms GUI with F#](https://medium.com/@vivainio/creating-a-windows-forms-gui-with-f-968b3ae75a82).
 
 ## Installation
 
