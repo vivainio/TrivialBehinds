@@ -30,10 +30,10 @@ Both of these beautiful dreams can be realized with a tiny library, written expr
 - In the end of Form1.Designer.cs (assuming you didn't bother to change the form class name), you will find these type declarations:
 
 ```csharp
-    //Form1.Designer.cs
-    private System.Windows.Forms.Button btnPlus;
-    private System.Windows.Forms.Label label1;
-    private System.Windows.Forms.Button btnMinus;
+//Form1.Designer.cs
+private System.Windows.Forms.Button btnPlus;
+private System.Windows.Forms.Label label1;
+private System.Windows.Forms.Button btnMinus;
 ```
 
 You need to copy-paste them to a new class within the DesignerPart project and make them public (I removed the full type qualifiers for readability):
@@ -57,7 +57,7 @@ public Form1()
 {
     InitializeComponent();
     // this is only thing you need to add to your form
-    var d = TrivialBehinds.CreateForUi(new Form1Ui
+    var d = TrivialBehinds.CreateBehind(this, new Form1Ui
     {
         btnMinus = btnMinus,
         btnPlus = btnPlus,
@@ -124,7 +124,6 @@ If that extra terminal window on launch bothers you, change outputtype form Exe 
 
 ## Extra notes
 
-- The library is not yet in nuget, I will push it after a feedback round.
 - Windows Forms apps have fuzzy font rendering on Windows 10, unless you do a [trick](https://docs.microsoft.com/en-us/dotnet/framework/winforms/high-dpi-support-in-windows-forms)
 and compile with .NET Framework 4.7. Don't even think about publishing a Windows Forms
 app without this.
