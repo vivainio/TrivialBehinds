@@ -55,7 +55,11 @@ Now, TrivialBehinds steps in. In Form1.cs, after InitializeComponent call in cto
 public Form1()
 {
     InitializeComponent();
+<<<<<<< HEAD
     // this is only thing you need to add to your form, to expose ui controls
+=======
+    // this is only thing you need to add to your form
+>>>>>>> 80a21aa23ff5b44e2782e10a460b342541070c13
     var d = TrivialBehinds.CreateBehind(this, new Form1Ui
     {
         btnMinus = btnMinus,
