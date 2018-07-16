@@ -76,7 +76,7 @@ type Form1Behind(ui: Form1) =
 ```fsharp
 [<EntryPoint; STAThread>]
 let main argv =
-    TrivialBehinds.RegisterBehind<Form1Ui, Form1Behind>()
+    TrivialBehinds.RegisterBehind<Form1, Form1Behind>()
     use form = new Form1()
     Application.Run(form)
     0
