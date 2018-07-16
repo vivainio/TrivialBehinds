@@ -28,53 +28,20 @@ Both of these beautiful dreams can be realized with a tiny library, written expr
 
 - Create solution with two projects: DesignerPart.csproj (a C# Forms application) and FsMain.fsproj (an F# console application).
 - Draw and test the UI in DesignerPart
-- In the end of Form1.Designer.cs (assuming you didn't bother to change the form class name), you will find these type declarations:
+- Change all the controls listed on Form1.Design.cs to public
 
-```csharp
-//Form1.Designer.cs
-private System.Windows.Forms.Button btnPlus;
-private System.Windows.Forms.Label label1;
-private System.Windows.Forms.Button btnMinus;
-```
-
-You need to copy-paste them to a new class within the DesignerPart project and make them public (I removed the full type qualifiers for readability):
-
-```csharp
-// Form1Ui.cs
-public class Form1Ui
-{
-    public Button btnPlus;
-    public Label label1;
-    public Button btnMinus;
-}
-```
-
-(Note that I didn't make the names PascalCase. Deal with it. Think of it as symmetry with originals or something.)
-
-Now, TrivialBehinds steps in. In Form1.cs, after InitializeComponent call in ctor, we'll add the last bit of C# code we need:
+Now, TrivialBehinds steps in. In Form1.cs, after InitializeComponent call in ctor, we'll add the only bit of C# code (call to CreateComponentBehind) we need:
 
 ```csharp
 public Form1()
 {
     InitializeComponent();
-    // this is only thing you need to add to your form
-    var d = TrivialBehinds.CreateBehind(this, new Form1Ui
-    {
-        btnMinus = btnMinus,
-        btnPlus = btnPlus,
-        label1 = label1
-    });
-    Deactivate += (o, e) => d.Dispose();
-    // boilerplate ends
+    TrivialBehinds.CreateComponentBehind(this);
 }
 ```
 
-You'll note that VS autocomplete gives a pretty satisfying show when writing that Form1Ui initialization boilerplace.
-
-What this code does is:
-
-- It copies the ui control references that were verbosely created within InitializeComponent to a neat new class that can be passed around.
-- it requests the instantiation of a "behind" class that corresponds to Form1Ui. This "behind" class will hook up the events and
+- it requests the instantiation of a "behind" class that corresponds to the
+  form class "Form1". This "behind" class will hook up the events and
   implements all the UI logic in F#. Note that the DesignerPart doesn't need dll or project reference to the "behind" part.
 
 ### The F# side
@@ -86,7 +53,7 @@ Huh, now to wash away that dirty feeling of authoring C# by switching to F# side
 - Implement the "Behind" part, which has all the real logic:
 
 ```fsharp
-type Form1Behind(ui: Form1Ui) =
+type Form1Behind(ui: Form1) =
     let mutable counter = 0
 
     let showCount() =
@@ -126,5 +93,5 @@ If that extra terminal window on launch bothers you, change outputtype form Exe 
 ## Extra notes
 
 - Windows Forms apps have fuzzy font rendering on Windows 10, unless you do a [trick](https://docs.microsoft.com/en-us/dotnet/framework/winforms/high-dpi-support-in-windows-forms)
-and compile with .NET Framework 4.7. Don't even think about publishing a Windows Forms
-app without this.
+and compile with .NET Framework 4.7. Don't even think about publishing a
+Windows Forms app without this.
