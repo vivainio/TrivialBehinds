@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace TrivialBehind
@@ -54,6 +55,13 @@ namespace TrivialBehind
                 });
             return new BDisposer(instance);
         }
+        // both registers a form and creates the behind. Works with IComponent, like those in Windows.Forms
+        public static void CreateComponentBehind<T>(T ctrl) where T : IComponent
+        {
+            var d = TrivialBehinds.CreateBehind<T>(ctrl, ctrl);
+            ctrl.Disposed += (o, e) => d.Dispose();
+        }
+
         // should not be called from form side (since it shouldn't know behind types)
         public static TBehind[] BehindsByType<TBehind>()
         {

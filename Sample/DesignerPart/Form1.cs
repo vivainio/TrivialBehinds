@@ -21,10 +21,16 @@ namespace DesignerPart
             {
                 btnMinus = btnMinus,
                 btnPlus = btnPlus,
-                label1 = label1
+                label1 = label1,
+                btnLaunchDirect = btnLaunchDirect
             });
-            Deactivate += (o, e) => d.Dispose();
+            this.Disposed += (o, e) => d.Dispose();
             // boilerplate ends
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
