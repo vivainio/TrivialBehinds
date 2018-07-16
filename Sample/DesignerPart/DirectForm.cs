@@ -11,16 +11,12 @@ using TrivialBehind;
 
 namespace DesignerPart
 {
-    public static class BehindCreator
-
-    {
-    }
     public partial class DirectForm : Form
     {
         public DirectForm()
         {
             InitializeComponent();
-            BehindCreator.CreateComponentBehind(this);
+            TrivialBehinds.CreateComponentBehind(this);
 
         }
     }
