@@ -15,7 +15,6 @@ namespace TrivialBehind
     {
         static Dictionary<Type, Type> registeredBehinds = new Dictionary<Type, Type>();
         static List<StoredBehind> createdBehinds = new List<StoredBehind>();
-
         class BDisposer : IDisposable
         {
             private readonly object obj;
@@ -80,4 +79,17 @@ namespace TrivialBehind
             return found.BehindInstance as TBehind ?? throw new ArgumentException($"Behind was of wrong type, expected {typeof(TBehind)}");
         }
     }
+    // add old fashioned singleton DI :-/
+
+    public static class TrivialDi
+    {
+        static Dictionary<Type, object> singletons = new Dictionary<Type, object>();
+
+        public static TInterface Resolve<TInterface>() where TInterface : class =>
+            singletons[typeof(TInterface)] as TInterface;
+
+        public static void AddSingleton<TInterface>(TInterface o) where TInterface : class =>
+            singletons.Add(typeof(TInterface), o);
+    }
+
 }
