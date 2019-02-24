@@ -1,5 +1,7 @@
 # TrivialBehinds
 
+[![Build Status](https://dev.azure.com/ville0567/ville/_apis/build/status/vivainio.TrivialBehinds?branchName=master)](https://dev.azure.com/ville0567/ville/_build/latest?definitionId=7&branchName=master)
+
 A Micro Dependency Injector to make Windows Forms development in F# cheap and fun. Or even in C#.
 
 You may also want to read a [related blog post on creating a Windows Forms GUI with F#](https://medium.com/@vivainio/creating-a-windows-forms-gui-with-f-968b3ae75a82).
