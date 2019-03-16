@@ -28,11 +28,17 @@ type DirectBehind(ui: DirectForm) =
     do 
         ui.label1.Text <- "Direct form initialized"
     
+type UserControlBehind(ctrl: UserControl1) = 
+    do        
+        ()
+    
+
 
 
 let registerAppBehinds() =
     TrivialBehinds.RegisterBehind<Form1Ui, Form1Behind>()
-    TrivialBehinds.RegisterBehind<DirectForm, DirectBehind>();
+    TrivialBehinds.RegisterBehind<DirectForm, DirectBehind>()
+    TrivialBehinds.RegisterBehind<UserControl1, UserControlBehind>()
 
 [<EntryPoint; STAThread>]
 let main argv =
