@@ -24,14 +24,15 @@ type Form1Behind(ui: Form1Ui) =
 
 
 // example without separate UI class
-type DirectBehind(ui: DirectForm) = 
-    do 
+type DirectBehind(ui: DirectForm) =
+    do
         ui.label1.Text <- "Direct form initialized"
-    
-type UserControlBehind(ctrl: UserControl1) = 
-    do        
+
+type UserControlBehind(ctrl: UserControl1) =
+    do
+        ctrl.label1.Text <- "Text in user control"
         ()
-    
+
 
 
 
