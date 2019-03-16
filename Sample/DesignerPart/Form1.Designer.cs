@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnLaunchDirect = new System.Windows.Forms.Button();
+            this.userControl11 = new DesignerPart.UserControl1();
             this.SuspendLayout();
             // 
             // btnPlus
@@ -71,11 +72,19 @@
             this.btnLaunchDirect.UseVisualStyleBackColor = true;
             this.btnLaunchDirect.Click += new System.EventHandler(this.button1_Click);
             // 
+            // userControl11
+            // 
+            this.userControl11.Location = new System.Drawing.Point(230, 42);
+            this.userControl11.Name = "userControl11";
+            this.userControl11.Size = new System.Drawing.Size(111, 28);
+            this.userControl11.TabIndex = 4;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(378, 93);
+            this.Controls.Add(this.userControl11);
             this.Controls.Add(this.btnLaunchDirect);
             this.Controls.Add(this.btnMinus);
             this.Controls.Add(this.label1);
@@ -93,6 +102,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnMinus;
         private System.Windows.Forms.Button btnLaunchDirect;
+        private UserControl1 userControl11;
     }
 }
 

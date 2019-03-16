@@ -15,7 +15,7 @@ namespace DesignerPart
     {
         public UserControl1()
         {
-            InitializeComponent();            
+            InitializeComponent();
             TrivialBehinds.CreateComponentBehind(this);
         }
     }

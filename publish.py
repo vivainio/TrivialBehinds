@@ -3,7 +3,7 @@ from __future__ import print_function
 import os,shutil,glob
 
 prjdir = "TrivialBehinds"
-version = "1.1"
+version = "1.2"
 def c(s):
     print(">",s)
     err = os.system(s)

@@ -33,6 +33,7 @@ namespace TrivialBehind
             registeredBehinds.Add(typeof(TData), typeof(TBehind));
         }
 
+        
         // creates a behind object for corresponding TData type
         // returns the disposer that removes this from list
         public static IDisposable CreateBehind<TData>(object creator, TData ui)
@@ -41,6 +42,11 @@ namespace TrivialBehind
             var ok = registeredBehinds.TryGetValue(typeof(TData), out handler);
             if (!ok)
             {
+                // prevent crashes in forms designer
+                if(System.ComponentModel.LicenseManager.UsageMode == System.ComponentModel.LicenseUsageMode.Designtime)
+                {
+                    return new BDisposer(null);
+                }
                 throw new ArgumentException($"Behind handler for {ui} not found");
             }
             var ctor = handler.GetConstructor(new[] { typeof(TData) });
@@ -57,6 +63,7 @@ namespace TrivialBehind
         // both registers a form and creates the behind. Works with IComponent, like those in Windows.Forms
         public static void CreateComponentBehind<T>(T ctrl) where T : IComponent
         {
+
             var d = TrivialBehinds.CreateBehind<T>(ctrl, ctrl);
             ctrl.Disposed += (o, e) => d.Dispose();
         }
